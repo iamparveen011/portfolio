@@ -1,0 +1,1590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Blog - Digital Marketing & Tech Insights</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background: #ffffff;
+            overflow-x: hidden;
+            padding-top: 40px; /* Navbar height  */
+        }
+             /* Fixed Navigation Bar */
+               /* Fixed Navigation Bar */
+        .main-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1e293b;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .logo span {
+            color: #3b82f6;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-menu a {
+            color: #64748b;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            padding: 0.6rem 1.2rem;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 2px;
+            left: 50%;
+            background: linear-gradient(45deg, #3b82f6, #1d4ed8);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+            border-radius: 1px;
+        }
+
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after {
+            width: calc(100% - 24px);
+        }
+
+        .nav-menu a:hover {
+            color: #3b82f6;
+            
+            transform: translateY(-1px);
+        }
+
+        .nav-menu a.active {
+            color: #3b82f6;
+            font-weight: 600;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger:hover {
+            background: rgba(59, 130, 246, 0.08);
+        }
+
+        .bar {
+            width: 25px;
+            height: 3px;
+            background: #64748b;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        .hamburger:hover .bar {
+            background: #3b82f6;
+        }
+
+        .navbar-scrolled {
+            padding: 0.5rem 0;
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-scrolled .logo {
+            font-size: 1.6rem;
+        }
+
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+            z-index: 1001;
+            transition: width 0.3s ease;
+        }
+
+        @media screen and (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .nav-menu a::after {
+                display: none;
+            }
+
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background: rgba(255, 255, 255, 0.98);
+                width: 100%;
+                text-align: center;
+                transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+                backdrop-filter: blur(15px);
+                padding: 2rem 0;
+                gap: 0;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-menu li {
+                margin: 0.8rem 0;
+                opacity: 0;
+                transform: translateX(-20px);
+                transition: all 0.3s ease;
+            }
+
+            .nav-menu.active li {
+                opacity: 1;
+                transform: translateX(0);
+            }
+
+            .nav-menu.active li:nth-child(1) { transition-delay: 0.1s; }
+            .nav-menu.active li:nth-child(2) { transition-delay: 0.2s; }
+            .nav-menu.active li:nth-child(3) { transition-delay: 0.3s; }
+            .nav-menu.active li:nth-child(4) { transition-delay: 0.4s; }
+            .nav-menu.active li:nth-child(5) { transition-delay: 0.5s; }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(6px) rotate(45deg);
+                background: #3b82f6;
+            }
+
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-6px) rotate(-45deg);
+                background: #3b82f6;
+            }
+
+            body {
+                padding-top: 70px;
+            }
+        }
+
+        /* Main Wrapper */
+        .wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 3rem;
+            padding: 2rem 0;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, #2d3748, #667eea);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: #718096;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Blog Posts Grid */
+        .blog-grid {
+            display: grid;
+            gap: 2.5rem;
+        }
+
+        .featured-post {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(226, 232, 240, 0.6);
+        }
+
+        .featured-post:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .post-image {
+            height: 300px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .post-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .post-category {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: rgba(255, 255, 255, 0.95);
+            color: #667eea;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+        }
+
+        .post-content {
+            padding: 2rem;
+        }
+
+        .post-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            color: #a0aec0;
+            font-size: 0.9rem;
+        }
+
+        .post-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .post-title a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        .post-title a:hover {
+            color: #667eea;
+        }
+
+        .post-excerpt {
+            color: #718096;
+            margin-bottom: 1.5rem;
+        }
+
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .read-more:hover {
+            color: #764ba2;
+            transform: translateX(5px);
+        }
+
+        /* Regular Posts */
+        .regular-posts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .post-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(226, 232, 240, 0.4);
+        }
+
+        .post-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .post-card .post-image {
+            height: 200px;
+        }
+
+        .post-card .post-content {
+            padding: 1.5rem;
+        }
+
+        .post-card .post-title {
+            font-size: 1.2rem;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: sticky;
+            top: 110px;
+            height: fit-content;
+        }
+
+        .sidebar-widget {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(226, 232, 240, 0.4);
+        }
+
+        .widget-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 0.5rem;
+        }
+
+        .recent-posts-list {
+            list-style: none;
+        }
+
+        .recent-posts-list li {
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #f7fafc;
+        }
+
+        .recent-posts-list li:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .recent-post-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #2d3748;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .recent-post-title:hover {
+            color: #667eea;
+        }
+
+        .recent-post-date {
+            font-size: 0.8rem;
+            color: #a0aec0;
+            margin-top: 0.25rem;
+        }
+
+        /* Categories */
+        .categories-list {
+            list-style: none;
+        }
+
+        .categories-list li {
+            margin-bottom: 0.5rem;
+        }
+
+        .category-link {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem;
+            color: #4a5568;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .category-link:hover {
+            background: #f7fafc;
+            color: #667eea;
+        }
+
+        .category-count {
+            background: #edf2f7;
+            color: #4a5568;
+            padding: 0.25rem 0.5rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+        }
+
+        /* Tags */
+        .tags-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background: #f7fafc;
+            color: #4a5568;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .tag:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .pagination a,
+        .pagination span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .pagination a {
+            background: white;
+            color: #4a5568;
+            border: 1px solid #e2e8f0;
+        }
+
+        .pagination a:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .pagination .current {
+            background: #667eea;
+            color: white;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: static;
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 2rem 0;
+            }
+
+            .regular-posts {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .wrapper {
+                padding: 0 15px;
+            }
+
+            .post-content {
+                padding: 1.5rem;
+            }
+
+            .sidebar-widget {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* Loading Animation */
+        .loading {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .loading.loaded {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Search Bar */
+        .search-container {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .search-input:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        /* Newsletter Signup */
+        .newsletter-form {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 0.5rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            outline: none;
+        }
+
+        .newsletter-input:focus {
+            border-color: #667eea;
+        }
+
+        .newsletter-btn {
+            padding: 0.5rem 1rem;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .newsletter-btn:hover {
+            background: #764ba2;
+        }
+               /* Footer */
+        footer {
+            background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 50%, #e2e8f0 100%);
+            color: #475569;
+            padding: 60px 0 30px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            border-radius: 0;
+            box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-bottom: none;
+            border-left: none;
+            border-right: none;
+            max-width: none;
+            margin: 0;
+            z-index: 1;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #3b82f6, transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 60px;
+            margin-bottom: 40px;
+            position: relative;
+            margin-left: 100px;
+        }
+
+        .footer-col {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .footer-col:nth-child(1) { animation-delay: 0.1s; }
+        .footer-col:nth-child(2) { animation-delay: 0.2s; }
+        .footer-col:nth-child(3) { animation-delay: 0.3s; }
+        .footer-col:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .footer-col h4 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 600;
+        }
+        
+        .footer-col h4:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: #3b82f6;
+            transform: scaleX(0);
+            animation: expandLine 0.8s ease forwards;
+            animation-delay: 0.6s;
+        }
+
+        @keyframes expandLine {
+            to { transform: scaleX(1); }
+        }
+
+        .footer-col p {
+            color: #64748b;
+            line-height: 1.6;
+            font-size: 0.95rem;
+            margin-bottom: 16px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 10px;
+            transition: var(--transition);
+        }
+        
+        .footer-col ul li a {
+            color: #475569;
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            position: relative;
+            padding: 6px 0;
+        }
+
+        .footer-col ul li a::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background: #3b82f6;
+            transition: width 0.3s ease;
+        }
+        
+        .footer-col ul li a:hover {
+            color: #3b82f6;
+            padding-left: 5px;
+            transform: translateX(3px);
+        }
+
+        .footer-col ul li a:hover::before {
+            width: 25px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 50%;
+            color: #64748b;
+            font-size: 1.1rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: #3b82f6;
+            transition: left 0.5s ease;
+            z-index: -1;
+        }
+
+        .social-links a:hover::before {
+            left: 0;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(148, 163, 184, 0.2);
+            color: #64748b;
+            position: relative;
+        }
+
+        .copyright::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #3b82f6, transparent);
+        }
+
+        .copyright p {
+            opacity: 0;
+            animation: fadeIn 1s ease forwards;
+            animation-delay: 1s;
+            font-size: 0.9rem;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        /* Floating particles effect */
+        .particle {
+            position: absolute;
+            background: #3b82f6;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0.3;
+            animation: float 6s infinite ease-in-out;
+        }
+
+        .particle:nth-child(1) { width: 3px; height: 3px; top: 20%; left: 10%; animation-delay: 0s; }
+        .particle:nth-child(2) { width: 4px; height: 4px; top: 60%; left: 90%; animation-delay: 1s; }
+        .particle:nth-child(3) { width: 2px; height: 2px; top: 80%; left: 20%; animation-delay: 2s; }
+        .particle:nth-child(4) { width: 3px; height: 3px; top: 30%; left: 80%; animation-delay: 3s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(180deg); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+            
+            .container {
+                padding: 0 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .container {
+                padding: 0 20px;
+            }
+
+            footer {
+                padding: 40px 0 20px;
+            }
+            
+            .footer-col h4 {
+                font-size: 16px;
+            }
+            
+            .footer-col p {
+                font-size: 0.9rem;
+            }
+            
+            .social-links {
+                justify-content: flex-start;
+                gap: 10px;
+            }
+            
+            .social-links a {
+                width: 38px;
+                height: 38px;
+            }
+            
+            .copyright {
+                padding-top: 20px;
+            }
+            
+            .copyright p {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+     <!-- navigation bar -->
+    <div class="scroll-indicator"></div>
+
+    <main-header class="main-header">
+       <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">Parveen<span>.</span></a>
+                <ul class="nav-menu">
+                    <li><a href="index.html" >Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="demo2.html">Portfolio</a></li>
+                    <li><a href="blog.html" class="active">Blog</a></li>
+                    <li><a href="contact.html" >Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </main-header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="wrapper">
+            <h1 class="hero-title fade-in">Digital Marketing & Tech Insights</h1>
+            <p class="hero-subtitle fade-in">Stay updated with the latest trends, strategies, and innovations in digital marketing and technology</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="wrapper">
+        <main class="main-content">
+            <!-- Blog Posts -->
+            <section class="blog-section">
+                <!-- Featured Post -->
+                <article class="featured-post loading">
+                    <div class="post-image"><img src="https://iili.io/KcFDRfa.jpg">
+                        <div class="post-category">SEO</div>
+                    </div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span>March 15, 2024</span>
+                            <span>•</span>
+                            <span>5 min read</span>
+                        </div>
+                        <h2 class="post-title">
+                            <a href="#">The Ultimate Guide to Technical SEO in 2024: Boost Your Rankings</a>
+                        </h2>
+                        <p class="post-excerpt">
+                            Discover the latest technical SEO strategies that can significantly improve your website's search engine rankings. From Core Web Vitals to structured data implementation.
+                        </p>
+                        <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </article>
+
+                <!-- Regular Posts Grid -->
+                <div class="regular-posts">
+                    <article class="post-card loading">
+                        <div class="post-image">
+                            <img src="https://iili.io/KcKI9eV.jpg" alt="">
+                            <div class="post-category">Digital Marketing</div>
+                        </div>
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <span>March 12, 2024</span>
+                                <span>•</span>
+                                <span>3 min read</span>
+                            </div>
+                            <h3 class="post-title">
+                                <a href="#">Facebook Ads Strategy: 10 Tips for Better ROI</a>
+                            </h3>
+                            <p class="post-excerpt">
+                                Learn how to optimize your Facebook advertising campaigns for maximum return on investment with these proven strategies.
+                            </p>
+                            <a href="#" class="read-more">Read More →</a>
+                        </div>
+                    </article>
+
+                    <article class="post-card loading">
+                        <div class="post-image">
+                            
+                            <img src="https://iili.io/KcKzy5Q.jpg" alt="">
+                            <div class="post-category">Web Development</div>
+                        </div>
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <span>March 10, 2024</span>
+                                <span>•</span>
+                                <span>4 min read</span>
+                            </div>
+                            <h3 class="post-title">
+                                <a href="#">Building Responsive Websites: Modern CSS Techniques</a>
+                            </h3>
+                            <p class="post-excerpt">
+                                Master the art of creating responsive websites using modern CSS Grid, Flexbox, and container queries.
+                            </p>
+                            <a href="#" class="read-more">Read More →</a>
+                        </div>
+                    </article>
+
+                    <article class="post-card loading">
+                        <div class="post-image">
+                            <img src="https://iili.io/KcKzpdx.jpg" alt="">
+                            <div class="post-category">Content Marketing</div>
+                        </div>
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <span>March 8, 2024</span>
+                                <span>•</span>
+                                <span>6 min read</span>
+                            </div>
+                            <h3 class="post-title">
+                                <a href="#">Content Strategy That Converts: A Complete Guide</a>
+                            </h3>
+                            <p class="post-excerpt">
+                                Create compelling content that not only engages your audience but also drives conversions and business growth.
+                            </p>
+                            <a href="#" class="read-more">Read More →</a>
+                        </div>
+                    </article>
+
+                    <article class="post-card loading">
+                        <div class="post-image">
+                            <img src="https://iili.io/KcFDCHQ.jpg" alt="">
+                            <div class="post-category">Analytics</div>
+                        </div>
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <span>March 5, 2024</span>
+                                <span>•</span>
+                                <span>5 min read</span>
+                            </div>
+                            <h3 class="post-title">
+                                <a href="#">Google Analytics 4: Advanced Tracking Setup</a>
+                            </h3>
+                            <p class="post-excerpt">
+                                Set up advanced tracking in GA4 to get deeper insights into user behavior and improve your marketing decisions.
+                            </p>
+                            <a href="#" class="read-more">Read More →</a>
+                        </div>
+                    </article>
+
+                    <article class="post-card loading">
+                        <div class="post-image">
+                            <img src="https://iili.io/KcFDIx1.jpg">
+                            <div class="post-category">AI & Technology</div>
+                        </div>
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <span>March 3, 2024</span>
+                                <span>•</span>
+                                <span>4 min read</span>
+                            </div>
+                            <h3 class="post-title">
+                                <a href="#">AI in Marketing: Tools and Strategies for 2024</a>
+                            </h3>
+                            <p class="post-excerpt">
+                                Explore how artificial intelligence is revolutionizing marketing and discover the best AI tools for your campaigns.
+                            </p>
+                            <a href="#" class="read-more">Read More →</a>
+                        </div>
+                    </article>
+
+                    <article class="post-card loading">
+                        <div class="post-image">
+                            <img src="https://iili.io/KcFDxDP.jpg" alt="">
+                            <div class="post-category">E-commerce</div>
+                        </div>
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <span>March 1, 2024</span>
+                                <span>•</span>
+                                <span>7 min read</span>
+                            </div>
+                            <h3 class="post-title">
+                                <a href="#">E-commerce SEO: Optimize Your Online Store</a>
+                            </h3>
+                            <p class="post-excerpt">
+                                Complete guide to optimizing your e-commerce website for search engines and improving organic visibility.
+                            </p>
+                            <a href="#" class="read-more">Read More →</a>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Pagination -->
+                <div class="pagination">
+                    <a href="#">‹</a>
+                    <span class="current">1</span>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                    <a href="#">4</a>
+                    <a href="#">›</a>
+                </div>
+            </section>
+
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <!-- Search Widget -->
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">Search</h3>
+                    <div class="search-container">
+                        <input type="text" class="search-input" placeholder="Search articles...">
+                    </div>
+                </div>
+
+                <!-- Recent Posts Widget -->
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">Recent Posts</h3>
+                    <ul class="recent-posts-list">
+                        <li>
+                            <a href="#" class="recent-post-title">The Ultimate Guide to Technical SEO in 2024</a>
+                            <div class="recent-post-date">March 15, 2024</div>
+                        </li>
+                        <li>
+                            <a href="#" class="recent-post-title">Facebook Ads Strategy: 10 Tips for Better ROI</a>
+                            <div class="recent-post-date">March 12, 2024</div>
+                        </li>
+                        <li>
+                            <a href="#" class="recent-post-title">Building Responsive Websites: Modern CSS</a>
+                            <div class="recent-post-date">March 10, 2024</div>
+                        </li>
+                        <li>
+                            <a href="#" class="recent-post-title">Content Strategy That Converts</a>
+                            <div class="recent-post-date">March 8, 2024</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Categories Widget -->
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">Categories</h3>
+                    <ul class="categories-list">
+                        <li>
+                            <a href="#" class="category-link">
+                                <span>SEO</span>
+                                <span class="category-count">12</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="category-link">
+                                <span>Digital Marketing</span>
+                                <span class="category-count">8</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="category-link">
+                                <span>Web Development</span>
+                                <span class="category-count">6</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="category-link">
+                                <span>Content Marketing</span>
+                                <span class="category-count">5</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="category-link">
+                                <span>Analytics</span>
+                                <span class="category-count">4</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Tags Widget -->
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">Popular Tags</h3>
+                    <div class="tags-cloud">
+                        <a href="#" class="tag">SEO</a>
+                        <a href="#" class="tag">Google Ads</a>
+                        <a href="#" class="tag">Facebook Ads</a>
+                        <a href="#" class="tag">WordPress</a>
+                        <a href="#" class="tag">Analytics</a>
+                        <a href="#" class="tag">Content</a>
+                        <a href="#" class="tag">Backlinks</a>
+                        <a href="#" class="tag">Responsive</a>
+                    </div>
+                </div>
+
+                <!-- Newsletter Widget -->
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">Newsletter</h3>
+                    <p>Subscribe to get the latest articles and updates delivered to your inbox.</p>
+                    <form class="newsletter-form">
+                        <input type="email" class="newsletter-input" placeholder="Your email">
+                        <button type="submit" class="newsletter-btn">Subscribe</button>
+                    </form>
+                </div>
+        </main>
+    </div>
+<!-- Footer -->
+    <footer>
+        <!-- Floating particles -->
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        
+        <div class="footer-wrapper">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h4>Parveen</h4>
+                    <p>Digital Marketing with a Creative & Technical Edge.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="demo2.html">Portfolio</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="services.html">SEO Optimization</a></li>
+                        <li><a href="services.html">Social Media Marketing</a></li>
+                        <li><a href="services.html">PPC Campaigns</a></li>
+                        <li><a href="services.html">GMB Optimization</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="mailto:thememerboi01@gmail.com">thememerboi01@gmail.com</a></li>
+                        <li><a href="tel:+918799769074">+91 8799769074</a></li>
+                        <li>
+                            <div class="social-links">
+                                <a href="https://www.linkedin.com/in/iamparveen01" aria-label="LinkedIn">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="https://www.instagram.com/iamparveen099/" aria-label="Instagram">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="https://x.com/Iamparveen01" aria-label="Twitter">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2025 Parveen. All Rights Reserved. | Digital Marketing with a Creative & Technical Edge.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            hamburger.addEventListener('click', function() {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+
+            // Close mobile menu when clicking on nav links
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
+
+            // Manual active link control - no auto scroll detection
+            const navLinks = document.querySelectorAll('.nav-menu a');
+
+            // Set active link manually when clicked
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    // Remove active class from all links
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    // Add active class to clicked link
+                    this.classList.add('active');
+                });
+            });
+
+            // Navbar scroll effects
+            const navbar = document.querySelector('.navbar');
+            const scrollIndicator = document.querySelector('.scroll-indicator');
+            
+            window.addEventListener('scroll', () => {
+                // Navbar scroll effect
+                if (window.pageYOffset > 100) {
+                    navbar.classList.add('navbar-scrolled');
+                } else {
+                    navbar.classList.remove('navbar-scrolled');
+                }
+
+                // Scroll progress indicator
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                scrollIndicator.style.width = scrolled + '%';
+            });
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        const offsetTop = target.offsetTop - 80;
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Page transition animation
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationDelay = '0.2s';
+                        entry.target.style.animationPlayState = 'running';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.page-transition').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Set initial active state - Home will be active by default
+            // Remove this line: setActiveLink();
+        });
+        // Loading Animation on Scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('loaded');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all loading elements
+        document.querySelectorAll('.loading').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Search Functionality
+        const searchInput = document.querySelector('.search-input');
+        const postCards = document.querySelectorAll('.post-card, .featured-post');
+
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            
+            postCards.forEach(card => {
+                const title = card.querySelector('.post-title').textContent.toLowerCase();
+                const excerpt = card.querySelector('.post-excerpt').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm) || excerpt.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = searchTerm === '' ? 'block' : 'none';
+                }
+            });
+        });
+
+        // Newsletter Form
+        const newsletterForm = document.querySelector('.newsletter-form');
+        
+        newsletterForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = e.target.querySelector('.newsletter-input').value;
+            
+            if (email) {
+                alert('Thank you for subscribing! You will receive updates soon.');
+                e.target.querySelector('.newsletter-input').value = '';
+            }
+        });
+
+        // Smooth Scrolling for Internal Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Category Filter (if needed)
+        const categoryLinks = document.querySelectorAll('.category-link, .tag');
+        
+        categoryLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const category = e.target.textContent.toLowerCase();
+                
+                postCards.forEach(card => {
+                    const postCategory = card.querySelector('.post-category').textContent.toLowerCase();
+                    
+                    if (postCategory.includes(category) || category === 'all') {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Back to Top Button
+        const backToTopBtn = document.createElement('button');
+        backToTopBtn.innerHTML = '↑';
+        backToTopBtn.className = 'back-to-top';
+        backToTopBtn.style.cssText = `
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        `;
+        
+        document.body.appendChild(backToTopBtn);
+
+        // Show/Hide Back to Top Button
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.style.opacity = '1';
+                backToTopBtn.style.visibility = 'visible';
+            } else {
+                backToTopBtn.style.opacity = '0';
+                backToTopBtn.style.visibility = 'hidden';
+            }
+        });
+
+        // Back to Top Functionality
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Add hover effects for better UX
+        document.querySelectorAll('.post-card, .featured-post').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-5px)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Progressive Enhancement - Add animations
+        const style = document.createElement('style');
+        style.textContent = `
+            .post-card, .featured-post {
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+            
+            .back-to-top:hover {
+                background: #764ba2;
+                transform: scale(1.1);
+            }
+            
+            @media (prefers-reduced-motion: reduce) {
+                .post-card, .featured-post, .back-to-top {
+                    transition: none;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Performance: Lazy load images if they exist
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        if (img.dataset.src) {
+                            img.src = img.dataset.src;
+                            img.classList.remove('lazy');
+                            imageObserver.unobserve(img);
+                        }
+                    }
+                });
+            });
+
+            document.querySelectorAll('img[data-src]').forEach(img => {
+                imageObserver.observe(img);
+            });
+        }
+
+        // Initialize loading animations on page load
+        window.addEventListener('load', () => {
+            document.querySelectorAll('.loading').forEach((el, index) => {
+                setTimeout(() => {
+                    el.classList.add('loaded');
+                }, index * 100);
+            });
+        });
+    </script>
+</body>
+</html>

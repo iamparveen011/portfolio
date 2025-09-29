@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Work & Achievements - Digital Marketing Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            
+            background: #f8fafc;
+            min-height: 100vh;
+            padding: 0 !important; /*FOOTER PADDING */
+            color: #334155;
+            margin-top: 90px;
+              font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+               /* Fixed Navigation Bar */
+        .main-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1e293b;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .logo span {
+            color: #3b82f6;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-menu a {
+            color: #64748b;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            padding: 0.6rem 1.2rem;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 2px;
+            left: 50%;
+            background: linear-gradient(45deg, #3b82f6, #1d4ed8);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+            border-radius: 1px;
+        }
+
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after {
+            width: calc(100% - 24px);
+        }
+
+        .nav-menu a:hover {
+            color: #3b82f6;
+            
+            transform: translateY(-1px);
+        }
+
+        .nav-menu a.active {
+            color: #3b82f6;
+            font-weight: 600;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger:hover {
+            background: rgba(59, 130, 246, 0.08);
+        }
+
+        .bar {
+            width: 25px;
+            height: 3px;
+            background: #64748b;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        .hamburger:hover .bar {
+            background: #3b82f6;
+        }
+
+        .navbar-scrolled {
+            padding: 0.5rem 0;
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-scrolled .logo {
+            font-size: 1.6rem;
+        }
+
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+            z-index: 1001;
+            transition: width 0.3s ease;
+        }
+
+      
+
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 4rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .header h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, #2d3748, #667eea);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .header p {
+            color: #64748b;
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        .service-section {
+            margin-bottom: 5rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .service-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 3rem;
+            justify-content: center;
+        }
+
+        .service-icon {
+            width: 64px;
+            height: 64px;
+            background: #3b82f6;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .service-section:hover .service-icon {
+            transform: scale(1.1);
+        }
+
+        .service-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            line-height: 1.2;
+        }
+
+        .client-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 2rem;
+        }
+
+        .client-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            animation: slideInUp 0.6s ease-out forwards;
+        }
+
+        .client-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+            border-color: #cbd5e1;
+        }
+
+        .client-image {
+            width: 100%;
+            height: 280px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .client-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .client-card:hover .client-image img {
+            transform: scale(1.05);
+        }
+
+        .placeholder-text {
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-align: center;
+            opacity: 0.9;
+        }
+
+        .client-content {
+            padding: 2rem;
+        }
+
+        .client-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .client-description {
+            color: #64748b;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .client-result {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 1.25rem;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .result-text {
+            color: #1e293b;
+            font-size: 1rem;
+            line-height: 1.5;
+            font-weight: 500;
+        }
+
+        .highlight {
+            color: #3b82f6;
+            font-weight: 700;
+        }
+
+        .metric-badge {
+            display: inline-flex;
+            align-items: center;
+            background: #eff6ff;
+            color: #1d4ed8;
+            padding: 0.4rem 0.8rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-left: 0.75rem;
+        }
+
+        /* Additional Services */
+        .additional-services {
+            padding-bottom: 29px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .additional-service-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .additional-service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+        }
+
+        .service-description {
+            color: #64748b;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .features-list {
+            list-style: none;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 0;
+            color: #64748b;
+            font-size: 1rem;
+            opacity: 0;
+            animation: fadeInRight 0.6s ease-out forwards;
+        }
+
+        .feature-item::before {
+            content: '✓';
+            color: #10b981;
+            font-weight: bold;
+            margin-right: 1rem;
+            width: 20px;
+            height: 20px;
+            background: #ecfdf5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .service-section:nth-child(2) { animation-delay: 0.1s; }
+        .service-section:nth-child(3) { animation-delay: 0.2s; }
+        .service-section:nth-child(4) { animation-delay: 0.3s; }
+        .service-section:nth-child(5) { animation-delay: 0.4s; }
+
+        .client-card:nth-child(1) { animation-delay: 0.2s; }
+        .client-card:nth-child(2) { animation-delay: 0.3s; }
+        .client-card:nth-child(3) { animation-delay: 0.4s; }
+
+        .feature-item:nth-child(1) { animation-delay: 0.2s; }
+        .feature-item:nth-child(2) { animation-delay: 0.3s; }
+        .feature-item:nth-child(3) { animation-delay: 0.4s; }
+        .feature-item:nth-child(4) { animation-delay: 0.5s; }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 2rem 1rem;
+            }
+            
+            .header h1 {
+                font-size: 2.25rem;
+            }
+            
+            .service-title {
+                font-size: 2rem;
+            }
+            
+            .client-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .client-image {
+                height: 220px;
+            }
+            
+            .client-content {
+                padding: 1.5rem;
+            }
+        }
+        /* footer section */
+                        /* Footer */
+        footer {
+            
+            background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 50%, #e2e8f0 100%);
+            color: #475569;
+            padding: 60px  30px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            border-radius: 0;
+            box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-bottom: none;
+            border-left: none;
+            border-right: none;
+            max-width: none;
+            
+            margin: 0;
+            z-index: 1;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #3b82f6, transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 60px;
+            margin-bottom: 40px;
+            position: relative;
+            margin-left: 100px;
+        }
+
+        .footer-col {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .footer-col:nth-child(1) { animation-delay: 0.1s; }
+        .footer-col:nth-child(2) { animation-delay: 0.2s; }
+        .footer-col:nth-child(3) { animation-delay: 0.3s; }
+        .footer-col:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .footer-col h4 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 600;
+        }
+        
+        .footer-col h4:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: #3b82f6;
+            transform: scaleX(0);
+            animation: expandLine 0.8s ease forwards;
+            animation-delay: 0.6s;
+        }
+
+        @keyframes expandLine {
+            to { transform: scaleX(1); }
+        }
+
+        .footer-col p {
+            color: #64748b;
+            line-height: 1.6;
+            font-size: 0.95rem;
+            margin-bottom: 16px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 10px;
+            transition: var(--transition);
+        }
+        
+        .footer-col ul li a {
+            color: #475569;
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            position: relative;
+            padding: 6px 0;
+        }
+
+        .footer-col ul li a::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background: #3b82f6;
+            transition: width 0.3s ease;
+        }
+        
+        .footer-col ul li a:hover {
+            color: #3b82f6;
+            padding-left: 5px;
+            transform: translateX(3px);
+        }
+
+        .footer-col ul li a:hover::before {
+            width: 25px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 50%;
+            color: #64748b;
+            font-size: 1.1rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: #3b82f6;
+            transition: left 0.5s ease;
+            z-index: -1;
+        }
+
+        .social-links a:hover::before {
+            left: 0;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(148, 163, 184, 0.2);
+            color: #64748b;
+            position: relative;
+        }
+
+        .copyright::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #3b82f6, transparent);
+        }
+
+        .copyright p {
+            opacity: 0;
+            animation: fadeIn 1s ease forwards;
+            animation-delay: 1s;
+            font-size: 0.9rem;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+      
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero-content,
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero-text,
+            .about-text {
+                padding-right: 0;
+                margin-bottom: 40px;
+            }
+            
+            .hero-btns {
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 28px;
+            }
+            
+            .hero {
+                padding-top: 120px;
+                padding-bottom: 80px;
+            }
+            
+            .hero-text h1 {
+                font-size: 36px;
+            }
+        }
+        /* Responsive Design footer */
+        @media (max-width: 1024px) {
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+            
+            .container {
+                padding: 0 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .container {
+                padding: 0 20px;
+            }
+
+            footer {
+                padding: 40px 0 20px;
+            }
+            
+            .footer-col h4 {
+                font-size: 16px;
+            }
+            
+            .footer-col p {
+                font-size: 0.9rem;
+            }
+            
+            .social-links {
+                justify-content: flex-start;
+                gap: 10px;
+            }
+            
+            .social-links a {
+                width: 38px;
+                height: 38px;
+            }
+            
+            .copyright {
+                padding-top: 20px;
+            }
+            
+            .copyright p {
+                font-size: 0.85rem;
+            }
+        }
+
+          @media screen and (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .nav-menu a::after {
+                display: none;
+            }
+
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background: rgba(255, 255, 255, 0.98);
+                width: 100%;
+                text-align: center;
+                transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+                backdrop-filter: blur(15px);
+                padding: 2rem 0;
+                gap: 0;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-menu li {
+                margin: 0.8rem 0;
+                opacity: 0;
+                transform: translateX(-20px);
+                transition: all 0.3s ease;
+            }
+
+            .nav-menu.active li {
+                opacity: 1;
+                transform: translateX(0);
+            }
+
+            .nav-menu.active li:nth-child(1) { transition-delay: 0.1s; }
+            .nav-menu.active li:nth-child(2) { transition-delay: 0.2s; }
+            .nav-menu.active li:nth-child(3) { transition-delay: 0.3s; }
+            .nav-menu.active li:nth-child(4) { transition-delay: 0.4s; }
+            .nav-menu.active li:nth-child(5) { transition-delay: 0.5s; }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(6px) rotate(45deg);
+                background: #3b82f6;
+            }
+
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-6px) rotate(-45deg);
+                background: #3b82f6;
+            }
+
+            body {
+                padding-top: 70px;
+            }
+        }
+    </style>
+</head>
+<body>
+       <!-- navigation bar -->
+    <div class="scroll-indicator"></div>
+
+    <main-header class="main-header">
+       <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">Parveen<span>.</span></a>
+                <ul class="nav-menu">
+                    <li><a href="index.html" >Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="demo2.html" class="active">Portfolio</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html" >Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </main-header>
+
+    <div class="hero-container">
+        <div class="header">
+            <h1>My Work & Achievements</h1>
+            <p>Here's a glimpse of projects I've delivered for different clients in Digital Marketing.</p>
+        </div>
+
+        <!-- SEO Optimization Section -->
+        <div class="service-section">
+            <div class="service-header">
+                <div class="service-icon">🔍</div>
+                <div class="service-title">SEO Optimization</div>
+            </div>
+            <div class="client-grid">
+                <div class="client-card">
+                    <div class="client-image">
+                        <img src="https://iili.io/KlXrCPt.png" alt="">
+                        
+                    </div>
+                    <div class="client-content">
+                        <h3 class="client-name">Local Business Website</h3>
+                        <p class="client-description">Comprehensive SEO optimization for local business visibility and organic growth through strategic keyword targeting and content enhancement.</p>
+                        <div class="client-result">
+                            <div class="result-text"><span class="highlight">40% traffic growth</span> in 3 months<span class="metric-badge">+40%</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="client-card">
+                    <div class="client-image">
+                        <img src="https://iili.io/KA4czXf.png" alt="">
+                        
+                    </div>
+                    <div class="client-content">
+                        <h3 class="client-name">Gautam Automobile website SEO</h3>
+                        <p class="client-description">Strategic keyword optimization and technical SEO improvements to achieve first page rankings for competitive keywords.</p>
+                        <div class="client-result">
+                            <div class="result-text"><span class="highlight">25+ keywords ranking</span> on Google Page 1<span class="metric-badge">25+ KW</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="client-card">
+                    <div class="client-image">
+                        <img src="https://iili.io/Klh9krJ.png" alt="">
+                        
+                    </div>
+                    <div class="client-content">
+                        <h3 class="client-name">Blog Website</h3>
+                        <p class="client-description">Complete SEO transformation from zero organic traffic to substantial monthly visitors through content optimization and link building.</p>
+                        <div class="client-result">
+                            <div class="result-text">Organic traffic from <span class="highlight">0 to 5k/month</span><span class="metric-badge">5K/mo</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Social Media Marketing Section -->
+        <div class="service-section">
+            <div class="service-header">
+                <div class="service-icon">📱</div>
+                <div class="service-title">Social Media Marketing</div>
+            </div>
+            <div class="client-grid">
+                <div class="client-card">
+                    <div class="client-image">
+                        <img src="https://iili.io/KlXgboB.png" alt="">
+                        
+                    </div>
+                    <div class="client-content">
+                        <h3 class="client-name">Instagram Growth Campaign</h3>
+                        <p class="client-description">Strategic content creation and engagement tactics for rapid follower growth with authentic audience building and brand positioning.</p>
+                        <div class="client-result">
+                            <div class="result-text"><span class="highlight">3k followers</span> in 2 months<span class="metric-badge">3K</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="client-card">
+                    <div class="client-image">
+                        <img src="https://iili.io/KlhW4AF.png" alt="">
+                        
+                    </div>
+                    <div class="client-content">
+                        <h3 class="client-name">Facebook Advertising Campaign</h3>
+                        <p class="client-description">Targeted Facebook ad campaigns with optimized creative and precise audience targeting to maximize engagement and conversions.</p>
+                        <div class="client-result">
+                            <div class="result-text">Engagement rate <span class="highlight">+65%</span><span class="metric-badge">+65%</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="client-card">
+                    <div class="client-image">
+                        <img src="https://iili.io/KlhgmBI.png" alt="">
+                       
+                    </div>
+                    <div class="client-content">
+                        <h3 class="client-name">Brand Awareness Campaign</h3>
+                        <p class="client-description">Multi-platform brand awareness strategy with content marketing and influencer partnerships to expand brand reach and recognition.</p>
+                        <div class="client-result">
+                            <div class="result-text">Reach <span class="highlight">50k+ audience</span><span class="metric-badge">50K+</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PPC Campaigns Section -->
+        <div class="service-section">
+            <div class="service-header">
+                <div class="service-icon">💰</div>
+                <div class="service-title">PPC Campaigns</div>
+            </div>
+            <div class="client-grid">
+                <div class="client-card">
+                    <div class="client-image">
+                        <img src="https://www.kingofdigitalmarketing.com/blog/images/google%20ads%20cpc.png" alt="">
+                        
+                    </div>
+                    <div class="client-content">
+                        <h3 class="client-name">E-commerce Google Ads</h3>
+                        <p class="client-description">Performance-driven Google Ads campaign with shopping ads optimization and strategic bidding for maximum return on investment.</p>
+                        <div class="client-result">
+                            <div class="result-text"><span class="highlight">4x ROI</span> on Google Ads<span class="metric-badge">4X ROI</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="client-card">
+                    <div class="client-image">
+                        <img src="https://iili.io/KljTlvp.png" alt="">
+                       
+                    </div>
+                    <div class="client-content">
+                        <h3 class="client-name">Service Business Lead Generation</h3>
+                        <p class="client-description">SusaLabs Lead generation campaign with conversion-optimized landing pages and targeted ad copy for high-quality lead acquisition.</p>
+                        <div class="client-result">
+                            <div class="result-text"><span class="highlight">150+ leads</span> in 30 days<span class="metric-badge">150+</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="client-card">
+                    <div class="client-image">
+                        <img src="https://www.pranavjha.com/wp-content/uploads/2022/08/Last-30-days-stats-of-educational-app-install-campaigns.jpeg" alt="">
+                        
+                    </div>
+                    <div class="client-content">
+                        <h3 class="client-name">Car Rental CPC</h3>
+                        <p class="client-description">Time-sensitive seasonal advertising with optimized bidding strategies and creative rotation for peak performance periods.</p>
+                        <div class="client-result">
+                            <div class="result-text">CTR <span class="highlight">8%</span> (above average)<span class="metric-badge">8% CTR</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Google My Business Section -->
+        <div class="service-section">
+            <div class="service-header">
+                <div class="service-icon">📍</div>
+                <div class="service-title">Google My Business</div>
+            </div>
+            <div class="client-grid">
+                <div class="client-card">
+                    <div class="client-image">
+                        <img src="https://iili.io/KlXrqoN.png" alt="">
+                        
+                    </div>
+                    <div class="client-content">
+                        <h3 class="client-name">Local Shop Optimization</h3>
+                        <p class="client-description">Complete GMB profile optimization with photo updates, business information enhancement, and strategic review management.</p>
+                        <div class="client-result">
+                            <div class="result-text"><span class="highlight">70% increase</span> in calls from GMB<span class="metric-badge">+70%</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="client-card">
+                    <div class="client-image">
+                        <img src="https://iili.io/Kljw2Bs.png" alt="">
+                        
+                    </div>
+                    <div class="client-content">
+                        <h3 class="client-name">Car services business</h3>
+                        <p class="client-description">Local SEO strategy with citation building, review acquisition campaigns, and local keyword optimization for map rankings.</p>
+                        <div class="client-result">
+                            <div class="result-text">Map ranking <span class="highlight">top 3</span> in local searches<span class="metric-badge">TOP 3</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="client-card">
+                    <div class="client-image">
+                        <img src="https://iili.io/KlO9O2n.png" alt="">
+                        
+                    </div>
+                    <div class="client-content">
+                        <h3 class="client-name">Car Rental business</h3>
+                        <p class="client-description">Reputation management with systematic review collection strategy and professional response management for enhanced online presence.</p>
+                        <div class="client-result">
+                            <div class="result-text"><span class="highlight">4.5+ rating</span> with 100+ reviews<span class="metric-badge">4.5★</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Additional Services -->
+        <div class="additional-services">
+            <div class="additional-service-card">
+                <div class="service-header">
+                    <div class="service-icon">📧</div>
+                    <div class="service-title">Email Marketing</div>
+                </div>
+                <div class="service-description">
+                    Transform leads into devoted customers using personalized email campaigns and automated workflows that nurture relationships and drive conversions.
+                </div>
+                <ul class="features-list">
+                    <li class="feature-item">Automated Drip Campaigns</li>
+                    <li class="feature-item">Personalization & Segmentation</li>
+                    <li class="feature-item">Performance Analytics</li>
+                    <li class="feature-item">Template Design & Coding</li>
+                </ul>
+            </div>
+
+            <div class="additional-service-card">
+                <div class="service-header">
+                    <div class="service-icon">🚀</div>
+                    <div class="service-title">Advanced Techniques</div>
+                </div>
+                <div class="service-description">
+                    Employ cutting-edge methods like AEO (Answer Engine Optimization) and GEO (Geofencing/Geo-targeted marketing) to stay ahead of the competition.
+                </div>
+                <ul class="features-list">
+                    <li class="feature-item">Answer Engine Optimization</li>
+                    <li class="feature-item">Geofencing & Geo-targeting</li>
+                    <li class="feature-item">Voice Search Optimization</li>
+                    <li class="feature-item">AI-Powered Marketing</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+   <!-- Footer -->
+    <footer>
+        <!-- Floating particles -->
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        
+        <div class="footer-wrapper">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h4>Parveen</h4>
+                    <p>Digital Marketing with a Creative & Technical Edge.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="demo2.html">Portfolio</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="services.html">SEO Optimization</a></li>
+                        <li><a href="services.html">Social Media Marketing</a></li>
+                        <li><a href="services.html">PPC Campaigns</a></li>
+                        <li><a href="services.html">GMB Optimization</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="mailto:thememerboi01@gmail.com">thememerboi01@gmail.com</a></li>
+                        <li><a href="tel:+918799769074">+91 8799769074</a></li>
+                        <li>
+                            <div class="social-links">
+                                <a href="https://www.linkedin.com/in/iamparveen01" aria-label="LinkedIn">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="https://www.instagram.com/iamparveen099/" aria-label="Instagram">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="https://x.com/Iamparveen01" aria-label="Twitter">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2025 Parveen. All Rights Reserved. | Digital Marketing with a Creative & Technical Edge.</p>
+            </div>
+        </div>
+    </footer>
+    
+     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            hamburger.addEventListener('click', function() {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
+
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+
+            const navbar = document.querySelector('.navbar');
+            const scrollIndicator = document.querySelector('.scroll-indicator');
+            
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 100) {
+                    navbar.classList.add('navbar-scrolled');
+                } else {
+                    navbar.classList.remove('navbar-scrolled');
+                }
+
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                scrollIndicator.style.width = scrolled + '%';
+            });
+        });
+    </script>
+</body>
+</html>
